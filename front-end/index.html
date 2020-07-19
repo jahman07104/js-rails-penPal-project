@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href= "styles.css" />
+      <title>PenPal</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col s20">
+        <div id="main" class="card">
+          <br>
+          <div class="card-content">
+            <br>
+            <span class="card-title"><h1>PenPal  List</h1></span>
+              <div class="row">
+               <form id="penpal-form">
+                <div class="input-field col s20 "id="penpal-list"></div> 
+                <div class="input-field col s20">
+                  <input type="text" name="penpal" id="penpal">
+                  <label for="penpal">Click the Pic for a Penpal</label>
+                  <!-- <input type="submit" value="Add Penpal" class="btn"> -->
+                </div>
+                </form>
+                  
+            </div> 
+          </div>           
+           <div class="card-action" >
+            <h5 id="friend-title">Penpals</h5>
+              <div class="input-field col s12">
+                <input type="text" name="filter" id="filter">
+                <label for="filter">Filter Penpals by Name</label>
+              </div>
+               <ul class="collection"></ul>
+                <a href="#" class="clear-tasks btn black">Clear Penpals </a>
+          </div>   
+        </div>    
+      </div>  
+    </div>    
+  </div>
+
+
+  <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="src/penpal.js"></script>
+<script src="src/users.js"></script>
+
+
+</body>
+</html>
