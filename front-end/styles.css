@@ -1,19 +1,8 @@
 body{
   background-color: rgb(228, 215, 37);
 }
-
- li{
-  
-    height: 40x; 
-   padding: 40px; 
-} 
-.thin-red-border {
-  border-color: rgb(22, 179, 30);
-  border-width: 10px;
-  border-style: solid;
-}
 .links {
-  /* margin-right: 20px; */
+  margin-right: 20px;
   margin: auto;
 }
  h1{
@@ -39,4 +28,10 @@ color: green;
   padding: 20px;
   color: green;
   margin: 10px;
+
  }
+ span.card-title {
+  color: rgb(137, 221, 26);
+ } 
+ 
+ 
