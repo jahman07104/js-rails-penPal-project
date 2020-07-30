@@ -22,10 +22,10 @@
               <div class="input-field col s20 "id="penpal-list"></div> 
               <form id="penpal-form" method="post" action="http://localhost:3000/penpals" enctype="multipart/form-data">
                 <label for="penpal">CLick the pic to add a PenPal to the list</label>
-                <input name="penpal[name]" placeholder="Name">
-                <input name="penpal[city]" placeholder="City">
-                <input name="penpal[email]" placeholder="Email">
-                <input name="penpal[image]" type="file" accept="image/*" placeholder="Image">
+                <input name="penpal[name]" placeholder="Name" required>
+                <input name="penpal[city]" placeholder="City" required>
+                <input name="penpal[email]" placeholder="Email" required>
+                <input name="penpal[image]" type="file" accept="image/*" placeholder="Image" required>
                 <button>Add A New Penpal</button>
               </form>
             </div> 
