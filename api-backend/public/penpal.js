@@ -5,7 +5,6 @@ const form = document.querySelector('#penpal-form');
 const penpalList = document.querySelector('.collection');
 const clearBtn = document.querySelector('.clear-tasks');
 const filter = document.querySelector('#filter');
-const taskInput = document.querySelector('#penpal');
 const penpals = [];
 
 class Penpal {
@@ -23,7 +22,7 @@ class Penpal {
 fetchPenpals();
 
 function fetchPenpals() {
-  return fetch("http://localhost:3000/penpals")
+  return fetch("/penpals")
   .then(response => response.json())
   .then(response => {
     response.forEach(function(penpal) {
@@ -40,7 +39,7 @@ function fetchPenpals() {
 function renderUnchosenPenpal(penpal) {
   let list = document.getElementById("penpal-list")
   let input = document.createElement('input')
-  input.setAttribute("src", 'http://localhost:3000/images/' + penpal.image_url)
+  input.setAttribute("src", penpal.image_url)
   input.setAttribute("width", 98)
   input.setAttribute("height", 98)
   input.setAttribute("type", "image")
@@ -61,12 +60,10 @@ function addPenpal(event) {
   let element = event.target;
   let id = Number(element.getAttribute('data-id'))
   let penpal = penpals.find(p => p.id === id)
-  fetch(`http://localhost:3000/penpals/${id}/choose`, {method: 'POST'})
+  fetch(`/penpals/${id}/choose`, {method: 'POST'})
   .then(() => {
     element.remove()
     renderChosenPenpal(penpal)
-    // Clear input
-    taskInput.value = '';
   })
 }
 
@@ -94,13 +91,19 @@ function renderChosenPenpal(penpal) {
   const link = document.createElement('a');
   
   link.className = 'delete-item secondary-content';
-  // secondary content is must when using maerialze
+  // secondary content is must when using materialze
   // Add icon html
-  const i = document.createElement('i')
-  i.classList.add('fa', 'fa-remove')
-  i.setAttribute('data-id', penpal.id)
-  i.addEventListener('click', removePenpal)
-  link.append(i);
+  const cancel = document.createElement('i')
+  cancel.classList.add('fa', 'fa-remove')
+  cancel.setAttribute('data-id', penpal.id)
+  cancel.addEventListener('click', removePenpal)
+  link.append(cancel);
+
+  const destroy = document.createElement('i')
+  destroy.classList.add('fa', 'fa-trash')
+  destroy.setAttribute('data-id', penpal.id)
+  destroy.addEventListener('click', deletePenpal)
+  link.append(destroy);
 
   li.appendChild(link);
   penpalList.appendChild(li);
@@ -109,14 +112,11 @@ function removePenpal(e) {
   let element = e.target;
   let id = Number(element.getAttribute('data-id'))
   let penpal = penpals.find(p => p.id === id)
-  fetch(`http://localhost:3000/penpals/${id}/remove`, {method: 'POST'})
+  fetch(`/penpals/${id}/remove`, {method: 'POST'})
   .then(() => {
-  if(taskInput.value === '') {
     alert('this will remove your Penpal');
-  }
-  element.remove()
-  renderUnchosenPenpal(penpal)
-  taskInput.value = '';
+    element.remove()
+    renderUnchosenPenpal(penpal)
   })
   e.preventDefault();
   if(e.target.parentElement.classList.contains('delete-item')){
@@ -127,8 +127,20 @@ function removePenpal(e) {
    }
 }
 
+function deletePenpal(e) {
+  let element = e.target;
+  let id = Number(element.getAttribute('data-id'))
+  fetch(`/penpals/${id}`, {method: 'DELETE'})
+  .then(() => {
+    alert('this will delete your Penpal');
+    e.target.parentElement.parentElement.remove();
+  })
+  e.preventDefault();
+
+}
+
   function clearPenpals() {  
-    fetch(`http://localhost:3000/penpals/remove_all`, {method: 'DELETE'})
+    fetch(`/penpals/remove_all`, {method: 'DELETE'})
     .then(() => {
       alert('this will remove all Penpals');
       document.getElementById("penpal-list").innerHTML = ""

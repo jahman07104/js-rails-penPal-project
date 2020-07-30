@@ -32,14 +32,15 @@ User.destroy_all
   {name: "Yvonne", city: "Toronto", email: "Yvonne@aircanada.com", image_url: 'https://randomuser.me/api/portraits/med/women/89.jpg'},
   {name: "Rachel", city: "Berlin", email: "Rachel@vodafone.com", image_url: 'https://randomuser.me/api/portraits/med/women/44.jpg'}
   ]
-penpals_list.each do |penpal_params|
+  
+penpals_list.each do |params|
   # 1
   # user.penpals.create({name: "Jan Green", city: "Tacoma,Washington", email: "janice@AOl.com"})
   # 2
   # user.penpals.create({name: "Jani Green", city: "Tacoma,Washington", email: "janice@AOl.com"})
 
-  # user.penpals.create!(penpal_params)
-  Penpal.create!(penpal_params)
+  params[:image] = Down.download(params.delete(:image_url))
+  Penpal.create!(params)
 end
 puts "#{Penpal.count} penpals created"
 

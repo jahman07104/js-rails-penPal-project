@@ -17,20 +17,21 @@
           <br>
           <div class="card-content">
             <br>
-            <span class="card-title"><h1>PenPal  List</h1></span>
+            <span class="card-title"><h1>PenPals</h1></span>
             <div class="row">
               <div class="input-field col s20 "id="penpal-list"></div> 
-              <form id="penpal-form" method="post" action="http://localhost:3000/penpals" enctype="">
+              <form id="penpal-form" method="post" action="http://localhost:3000/penpals" enctype="multipart/form-data">
+                <label for="penpal">CLick the pic to add a PenPal to the list</label>
                 <input name="penpal[name]" placeholder="Name">
                 <input name="penpal[city]" placeholder="City">
                 <input name="penpal[email]" placeholder="Email">
                 <input name="penpal[image]" type="file" accept="image/*" placeholder="Image">
-                <button>Add Penpal</button>
+                <button>Add A New Penpal</button>
               </form>
             </div> 
           </div>           
           <div class="card-action" >
-            <h5 id="penpal-title">Penpals</h5>
+            <span class="card-title"><h2>Penpals List</h2></span>
             <div class="input-field col s12">
               <input type="text" name="filter" id="filter">
               <label for="filter">Filter Penpals by Name</label>
@@ -50,8 +51,7 @@ integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 crossorigin="anonymous"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="src/penpal.js"></script>
-<script src="src/users.js"></script>
+<script src="penpal.js"></script>
 
 
 </body>
