@@ -21,4 +21,10 @@ class UsersController < ApplicationController
       #status: 200
   end
 
+  private
+
+  def user_params
+    params.require(:user).permit(:name)
+    
+  end
 end

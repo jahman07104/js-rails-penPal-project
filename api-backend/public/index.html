@@ -17,27 +17,36 @@
           <br>
           <div class="card-content">
             <br>
-            <span class="card-title"><h1>PenPals</h1></span>
+            <span class="card-title" margin: 60px><h1>PenPals</h1></span>
             <div class="row">
               <div class="input-field col s20 "id="penpal-list"></div> 
               <form id="penpal-form" method="post" action="http://localhost:3000/penpals" enctype="multipart/form-data">
-                <label for="penpal">CLick the pic to add a PenPal to the list</label>
+                <label for="penpal" style="color:red">Click the pic to add a PenPal to the list</label>
                 <input name="penpal[name]" placeholder="Name" required>
                 <input name="penpal[city]" placeholder="City" required>
                 <input name="penpal[email]" placeholder="Email" required>
                 <input name="penpal[image]" type="file" accept="image/*" placeholder="Image" required>
                 <button>Add A New Penpal</button>
               </form>
+              
+              <form id="user-form" method="post" action="http://localhost:3000/users" enctype="multipart/form-data">
+                <label for="user" style="color:crimson"> add a User </label>
+                <input name="user[name]" placeholder="Name" required>
+                <input name="user[email]" placeholder="Email" required>
+                <input name="user[image]" type="file" accept="image/*" placeholder="Image" required>
+                <button>Add A New User</button>
+              </form> 
+            
             </div> 
           </div>           
           <div class="card-action" >
-            <span class="card-title"><h2>Penpals List</h2></span>
+            <span class="card-title" style="color:rgb(27, 216, 121)"><h2>Penpals List</h2></span>
             <div class="input-field col s12">
               <input type="text" name="filter" id="filter">
               <label for="filter">Filter Penpals by Name</label>
             </div>
             <ul class="collection"></ul>
-            <a href="#" class="clear-tasks btn black">Clear Penpals </a>
+            <!-- <a href="#" class="clear-tasks btn black">Clear Penpals </a> -->
           </div>   
         </div>    
       </div>  
